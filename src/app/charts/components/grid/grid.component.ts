@@ -39,7 +39,7 @@ export class GridComponent implements OnInit {
     // lanes: 6, // amount of lanes (cells) in the grid FIXME: uncomment this if breackpoints are also uncommented and comment the next line
     lanes: 18, // amount of lanes (cells) in the grid
     direction: 'vertical', // floating top - vertical, left - horizontal
-    floating: true, // enable/disable "gravity" to the elements to be able to float freely or not
+    floating: false, // enable/disable "gravity" to the elements to be able to float freely or not
     dragAndDrop: false, // enable/disable drag and drop for all items in grid
     resizable: false, // enable/disable resizing by drag and drop for all items in grid
     resizeHandles: { s: true, e: true, se: true },
