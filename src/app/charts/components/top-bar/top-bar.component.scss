@@ -1,0 +1,34 @@
+.omnibar {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	position: relative;
+	flex: 0 1 auto;
+	width: 100%;
+}
+.toolbar {
+	position: relative;
+	// padding-left: 10px;
+	display: flex;
+}
+.rotate-90 {
+	transform: rotate(90deg);
+}
+
+.editMode {
+	align-self: center;
+	margin-left: 3rem;
+	margin-right: 2rem;
+}
+
+.translateY-xs {
+	transform: translateY(0.1rem);
+}
+
+.mr{
+	margin-right: .6rem!important;
+}
+
+.ml{
+	margin-left: 1rem!important;
+}

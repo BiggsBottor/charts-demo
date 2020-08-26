@@ -1,0 +1,19 @@
+<div class="omnibar">
+    <div class="toolbar">
+        <button (click)="chartsService.addWidget()" class="myButton mr" mat-icon-button><mat-icon>add</mat-icon></button>
+        <button (click)="chartsService.addWidget('line')" class="myButton mr" mat-icon-button><mat-icon>timeline</mat-icon></button>
+        <button (click)="chartsService.addWidget('bar')" class="myButton mr" mat-icon-button><mat-icon class="rotate-90">bar_chart</mat-icon></button>
+        <button (click)="chartsService.addWidget('column')" class="myButton mr" mat-icon-button><mat-icon >bar_chart</mat-icon></button>
+        <button (click)="chartsService.addWidget('area')" class="myButton mr" mat-icon-button><mat-icon>crop_original</mat-icon></button>
+        <button (click)="chartsService.addWidget('pie')" class="myButton mr" mat-icon-button><mat-icon>pie_chart</mat-icon></button>
+    </div>
+    <div class="toolbar">
+        <button (click)="chartsService.saveGridState()" class="myButton mr" mat-icon-button><mat-icon>save</mat-icon></button>
+        <button (click)="chartsService.UndoGridState()" class="myButton" mat-icon-button><mat-icon>undo</mat-icon></button>
+    </div>
+    <div class="editMode">
+        <input (change)="toggleEditMode()" [checked]="isEditMode"
+        type="checkbox" name="isEditMode" class="translateY-xs mr">
+        <label for="isEditMode">Edit Mode</label>
+    </div>
+</div>

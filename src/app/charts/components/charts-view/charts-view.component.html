@@ -1,0 +1,10 @@
+<div class="toolNav">
+    <app-top-bar [editMode]="isEditMode$| async"></app-top-bar>
+    <hr>
+</div>
+<div class="grid-content">
+    <app-grid 
+        [editMode]="isEditMode$ | async" 
+        [widgets]="widgets$ | async"
+    ></app-grid>
+</div>
