@@ -2,10 +2,10 @@ import { Store } from '../../shared/store';
 import { Widget } from '../models';
 
 export interface ChartsStoreState {
-    // Widgets collection
+    // Widgets collection to show
     widgets: Widget[];
 
-    // control if is in edit mode
+    // Control if is in edit mode or not
     isEditMode: boolean;
 }
 

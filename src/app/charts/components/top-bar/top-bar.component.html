@@ -7,8 +7,12 @@
         <button (click)="chartsService.addWidget('area')" class="myButton mr" mat-icon-button><mat-icon>crop_original</mat-icon></button>
         <button (click)="chartsService.addWidget('pie')" class="myButton mr" mat-icon-button><mat-icon>pie_chart</mat-icon></button>
     </div>
+    <div class="toolbar">
+        <button (click)="chartsService.saveGridState()" class="myButton mr" mat-icon-button><mat-icon>save</mat-icon></button>
+        <button (click)="chartsService.UndoGridState()" class="myButton" mat-icon-button><mat-icon>undo</mat-icon></button>
+    </div>
     <div class="editMode">
-        <input (change)="toggleEditMode()" [value]="isEditMode" [checked]="isEditMode"
+        <input (change)="toggleEditMode()" [checked]="isEditMode"
         type="checkbox" name="isEditMode" class="translateY-xs mr">
         <label for="isEditMode">Edit Mode</label>
     </div>

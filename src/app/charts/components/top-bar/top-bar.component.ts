@@ -7,14 +7,17 @@ import { ChartsService } from '../../services';
   styleUrls: ['./top-bar.component.scss']
 })
 export class TopBarComponent implements OnInit {
-  // tslint:disable: no-inferrable-types
 
-  @Input() isEditMode: boolean = false;
+  isEditMode: boolean;
+
+  @Input() set editMode(value: boolean) {
+    if (this.isEditMode === undefined) { this.isEditMode = value; }
+  }
 
 
-  constructor(public chartsService: ChartsService) { }
+  constructor(public chartsService: ChartsService) {  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {  }
 
   toggleEditMode(): void {
     this.isEditMode = !this.isEditMode;

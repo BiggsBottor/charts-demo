@@ -2,7 +2,7 @@
     <ngx-gridster #Grid [options]="gridsterOptions" [draggableOptions]="gridsterDraggableOptions"
                     (optionsChange)="optionsChange($event)">
                     
-        <ngx-gridster-item #itemComp (change)="emitReflow(widget.chartId, $event)"
+        <ngx-gridster-item #itemComp (change)="emitReflow(widget.chartId, $event); consoleDOM()"
             *ngFor="let widget of widgetsToDraw; let i = index; trackBy: trackByFn"
             [dragAndDrop]="widget.dragAndDrop" [resizable]="widget.resizable"
             [(x)]="widget.x" [(y)]="widget.y"                       

@@ -22,14 +22,12 @@ export class GridComponent implements OnInit {
     }
   }
 
-  // @Input() widgets: Widget [] = [];
-  @Input() set widgets( widgets: Widget[] ) {
-    // console.log('grid array by set', widgets);
-    this.widgetsToDraw = widgets;
-  }
-
   widgetsToDraw: Widget [] = [];
 
+  @Input() set widgets( widgets: Widget[] ) {
+    // console.log('%cgrid array by set', 'color: coral', widgets);
+    this.widgetsToDraw = widgets;
+  }
 
   sReflow: Subject<FlagReflow> = new Subject<FlagReflow>();
 
@@ -60,19 +58,22 @@ export class GridComponent implements OnInit {
     // ]
   };
 
+
   constructor() { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
-  // consoleDOM(): void {
-  //   console.log(this.widgetsToDraw);
-  // }
+  consoleDOM(): void {
+    // console.log(this.widgetsToDraw);
+  }
 
-  trackByFn(index: any, item: any): any {
+  trackByFn(index: number, item: Widget): string {
     return item.chartId;
   }
 
   emitReflow(gridIdToSend: string, event: any): void {
+    // console.log('%cGrid event', 'color: pink', event);
     if (event.changes.includes('h') || event.changes.includes('w')){
       this.sReflow.next({ gridId: gridIdToSend });
     }

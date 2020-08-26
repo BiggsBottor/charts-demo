@@ -1,8 +1,10 @@
 <div class="toolNav">
-    <app-top-bar [isEditMode]="isEditMode$| async"></app-top-bar>
+    <app-top-bar [editMode]="isEditMode$| async"></app-top-bar>
     <hr>
 </div>
 <div class="grid-content">
-    <!-- <app-grid [editMode]="_chartsService.isEditMode" [widgets]="_chartsService.widgets"></app-grid> -->
-    <app-grid [editMode]="isEditMode$ | async" [widgets]="widgets$ | async"></app-grid>
+    <app-grid 
+        [editMode]="isEditMode$ | async" 
+        [widgets]="widgets$ | async"
+    ></app-grid>
 </div>
