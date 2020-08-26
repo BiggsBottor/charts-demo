@@ -65,7 +65,7 @@ export class ChartsService {
     chartsStore.set('widgets', this.widgets2Save);
 
     // after undo the changes, it trigger the window resize event to reflow the charts correctly
-    window.dispatchEvent(new Event('resize'));
+    // window.dispatchEvent(new Event('resize'));
   }
 
 }

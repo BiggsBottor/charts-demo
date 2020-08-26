@@ -73,7 +73,7 @@ export class GridComponent implements OnInit {
   }
 
   emitReflow(gridIdToSend: string, event: any): void {
-    // console.log('%cGrid event', 'color: pink', event);
+    console.log('%cGrid event', 'color: pink', event);
     if (event.changes.includes('h') || event.changes.includes('w')){
       this.sReflow.next({ gridId: gridIdToSend });
     }
@@ -86,6 +86,10 @@ export class GridComponent implements OnInit {
 
   optionsChange(options: IGridsterOptions): void {
     this.gridsterOptions = options;
+  }
+
+  onGridChange(event: any): void {
+    console.log(event);
   }
 
 }

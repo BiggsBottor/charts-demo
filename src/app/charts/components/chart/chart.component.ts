@@ -16,11 +16,10 @@ export class ChartComponent implements OnInit {
   @Input() chartId: string = 'container' + (1000 + new Date().getMilliseconds()).toString().substr(1);
 
   @Input() set reflowChart(value: FlagReflow) {
-    if (value){
-      if (value.gridId === this.chartId) {
-        // console.log('value from grid', value);
-        this.chart.reflow();
-      }
+    console.log('%cchart value', 'color: orange', value);
+    if (value && value.gridId === this.chartId) {
+      // console.log('value from grid', value);
+      this.chart.reflow();
     }
   }
 

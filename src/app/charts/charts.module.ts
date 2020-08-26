@@ -30,11 +30,6 @@ import {
     HighchartsChartModule,
     MatIconModule
   ],
-  exports: [
-    // ChartsViewComponent,
-    // TopBarComponent,
-    // GridComponent,
-    // ChartComponent
-  ]
+  exports: []
 })
 export class ChartsModule { }
