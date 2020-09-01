@@ -1,17 +1,19 @@
-import { Component, OnInit, ViewEncapsulation, ViewChild, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewEncapsulation, ViewChild, Input } from '@angular/core';
 import { IGridsterOptions, IGridsterDraggableOptions, GridsterComponent } from 'angular2gridster';
-import { Subject } from 'rxjs';
 import { Widget, FlagReflow } from '../../models';
+import { BehaviorSubject } from 'rxjs';
+
+
 
 @Component({
   selector: 'app-grid',
-  // changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './grid.component.html',
   styleUrls: ['./grid.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class GridComponent implements OnInit {
+export class GridComponent {
 
+  // -- Edit Mode Configuration -- //
   @ViewChild('Grid') gridEl!: GridsterComponent;
   @Input() set editMode(toggle: boolean) {
     if (this.gridEl !== undefined) {
@@ -22,19 +24,18 @@ export class GridComponent implements OnInit {
     }
   }
 
+  // -- Widget's array -- //
   widgetsToDraw: Widget [] = [];
-
   @Input() set widgets( widgets: Widget[] ) {
-    // console.log('%cgrid array by set', 'color: coral', widgets);
     this.widgetsToDraw = widgets;
   }
 
-  sReflow: Subject<FlagReflow> = new Subject<FlagReflow>();
+  // -- Observer that control the chart's reflow to fit correctly -- //
+  sReflow: BehaviorSubject<FlagReflow> = new BehaviorSubject<FlagReflow>({ gridId: null });
 
   // -- Gridster Options -- //
   gridsterDraggableOptions: IGridsterDraggableOptions = { handlerClass: 'panel-heading' };
   gridsterOptions: IGridsterOptions = {
-    // lanes: 6, // amount of lanes (cells) in the grid FIXME: uncomment this if breackpoints are also uncommented and comment the next line
     lanes: 18, // amount of lanes (cells) in the grid
     direction: 'vertical', // floating top - vertical, left - horizontal
     floating: false, // enable/disable "gravity" to the elements to be able to float freely or not
@@ -48,48 +49,23 @@ export class GridComponent implements OnInit {
     responsiveView: true, // turn on adopting items sizes on window resize and enable responsiveOptions
     responsiveDebounce: 50, // window resize debounce time
     responsiveSizes: true,
-    responsiveToParent: true,
-    // responsiveOptions: [
-    //   { breakpoint: null, lanes: 3 },
-    //   { breakpoint: 'sm', lanes: 6 , minWidth: 500  },
-    //   { breakpoint: 'md', lanes: 8 , minWidth: 768  },
-    //   { breakpoint: 'lg', lanes: 12, minWidth: 992  },
-    //   { breakpoint: 'xl', lanes: 18, minWidth: 1200 }
-    // ]
+    responsiveToParent: true
   };
 
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-  consoleDOM(): void {
-    // console.log(this.widgetsToDraw);
-  }
-
-  trackByFn(index: number, item: Widget): string {
+  trackByFn(i: number, item: Widget): string {
+    // the index i is needed to call this method but that's all
     return item.chartId;
   }
 
   emitReflow(gridIdToSend: string, event: any): void {
-    console.log('%cGrid event', 'color: pink', event);
-    if (event.changes.includes('h') || event.changes.includes('w')){
-      this.sReflow.next({ gridId: gridIdToSend });
-    }
+    // the $event itself it's only needed to tregger the method
+    this.sReflow.next({ gridId: gridIdToSend });
   }
 
   remove($event: any, index: number): void {
     $event.preventDefault();
     this.widgetsToDraw.splice(index, 1);
-  }
-
-  optionsChange(options: IGridsterOptions): void {
-    this.gridsterOptions = options;
-  }
-
-  onGridChange(event: any): void {
-    console.log(event);
   }
 
 }

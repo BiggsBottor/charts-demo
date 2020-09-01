@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ChartsService } from '../../services';
 
 @Component({
@@ -6,7 +6,7 @@ import { ChartsService } from '../../services';
   templateUrl: './top-bar.component.html',
   styleUrls: ['./top-bar.component.scss']
 })
-export class TopBarComponent implements OnInit {
+export class TopBarComponent {
 
   isEditMode: boolean;
 
@@ -16,8 +16,6 @@ export class TopBarComponent implements OnInit {
 
 
   constructor(public chartsService: ChartsService) {  }
-
-  ngOnInit(): void {  }
 
   toggleEditMode(): void {
     this.isEditMode = !this.isEditMode;

@@ -1,22 +1,29 @@
 <div class="main-content">
-    <ngx-gridster #Grid [options]="gridsterOptions" [draggableOptions]="gridsterDraggableOptions"
-                    (optionsChange)="optionsChange($event)" (change)="onGridChange()">
-                    
-        <ngx-gridster-item #itemComp (change)="emitReflow(widget.chartId, $event); consoleDOM()"
+    <ngx-gridster #Grid 
+        [options]="gridsterOptions" 
+        [draggableOptions]="gridsterDraggableOptions"
+    >
+       
+        <ngx-gridster-item class="resizes"
+            (onResize)="emitReflow(widget.chartId, $event)"
             *ngFor="let widget of widgetsToDraw; let i = index; trackBy: trackByFn"
             [dragAndDrop]="widget.dragAndDrop" [resizable]="widget.resizable"
             [(x)]="widget.x" [(y)]="widget.y"                       
             [(w)]="widget.w" [(h)]="widget.h" [id]="'grid' + widget.chartId" 
         >
-        
             <!-- some content -->
             <div class="panel-heading">
-                <h4 class="panel-title">{{ widget.title }}</h4>
+                <h4 class="panel-title">{{ widget.title }}</h4>                
                 <span (click)="remove($event, i)" class="myButton pointer"><mat-icon class="fontSize-22">clear</mat-icon></span>
             </div>
             <div class="panel-body">
-               <app-chart [chartId]="widget.chartId" [reflowChart]="sReflow | async" [chartOptions]="widget.chartOptions"></app-chart>
+                <app-chart [chartId]="widget.chartId" 
+                        [chartOptions]="widget.chartOptions"
+                        [reflowChart]="sReflow | async"
+                >
+                </app-chart>
             </div>
-        </ngx-gridster-item>
+        </ngx-gridster-item>      
+                    
     </ngx-gridster>
 </div>

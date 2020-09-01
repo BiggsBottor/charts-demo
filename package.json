@@ -1,6 +1,6 @@
 {
   "name": "charts-demo",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -26,6 +26,7 @@
     "highcharts": "^8.1.2",
     "highcharts-angular": "^2.7.0",
     "lodash-es": "^4.17.15",
+    "ngx-resize-observer": "^1.0.2",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
