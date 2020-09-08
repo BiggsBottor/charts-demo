@@ -4,10 +4,10 @@ import { NgModule } from '@angular/core';
 // -- MODULES -- //
 import { AppRoutingModule } from './app-routing.module';
 import { ChartsModule } from './charts/charts.module';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
